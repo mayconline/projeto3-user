@@ -1,0 +1,50 @@
+
+
+
+<ion-content padding>
+  <img class="banner" src="assets/imgs/logo2.png"   />
+
+    <ion-card class="card"> 
+
+        <ion-card-header  >
+          <img class="logo" src="assets/imgs/logo.png"/>
+          <h1 ion-text>Faça seu Login</h1>
+        </ion-card-header>
+      
+        <ion-card-content>
+          
+            <ion-item>
+                
+                <ion-label stacked>Email:</ion-label>
+                <ion-input type="text" value=""></ion-input>
+                <ion-icon name="mail" item-end></ion-icon>
+            </ion-item>
+            <ion-item>
+                <ion-label stacked> Senha:</ion-label>
+                <ion-input type="password" value=""></ion-input>
+                <ion-icon name="key" item-end></ion-icon>
+            </ion-item>
+
+              <ion-item>
+                  <button ion-button clear item-right >
+                      Recuperar senha?
+                  </button>
+              </ion-item>
+
+              <ion-item (click)="logar()">
+                  <button  ion-button color="secondary" outline block round icon-left>
+                       <ion-icon name="unlock"></ion-icon> Entrar 
+                  </button>
+              </ion-item>
+
+              <ion-item> 
+                  <ion-label>Não tem conta ?</ion-label>
+                  <button (click)="registrese()" ion-button clear item-right> Registre-se </button>
+              </ion-item>
+
+
+        </ion-card-content>
+      
+      </ion-card>
+
+</ion-content>

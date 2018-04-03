@@ -1,0 +1,55 @@
+
+
+
+
+<ion-content padding>
+    <img class="banner" src="assets/imgs/logo2.png"   />
+  
+      <ion-card class="card"> 
+  
+          <ion-card-header  >
+            <img class="logo" src="assets/imgs/logo.png"/>
+            <h1 ion-text>Crie sua Conta</h1>
+          </ion-card-header>
+        
+          <ion-card-content>
+            
+              <ion-item>
+                  
+                  <ion-label >Email:</ion-label>
+                  <ion-input type="text" value=""></ion-input>
+                  <ion-icon name="mail" item-content></ion-icon>
+              </ion-item>
+              <ion-item>
+                  <ion-label > Senha:</ion-label>
+                  <ion-input type="password" value=""></ion-input>
+                  <ion-icon name="key" item-content></ion-icon>
+              </ion-item>
+              <ion-item>
+                  <ion-label >Nome:</ion-label>
+                  <ion-input type="text" value=""></ion-input>
+                  <ion-icon name="person" item-content></ion-icon>
+              </ion-item>
+              <ion-item>
+                  <ion-label >CPF:</ion-label>
+                  <ion-input type="number" value=""></ion-input>
+                  <ion-icon name="paper" item-content></ion-icon>
+              </ion-item>
+
+  
+               
+  
+                <ion-item (click)="voltarLogin()">
+                    <button  ion-button color="secondary" outline block round icon-left>
+                         <ion-icon name="person-add"></ion-icon> Criar Conta
+                    </button>
+                </ion-item>
+  
+               
+         
+  
+          </ion-card-content>
+        
+        </ion-card>
+  
+  </ion-content>
