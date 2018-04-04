@@ -3,8 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
 
+
 /**
- * Generated class for the LoginPage page.
+ * Generated class for the PerfilPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,24 +13,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-login',
-  templateUrl: 'login.html',
+  selector: 'page-perfil',
+  templateUrl: 'perfil.html',
 })
-export class LoginPage {
+export class PerfilPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
 
-  logar(){
-    this.navCtrl.push('TabsPage');
-  }
-  registrese(){
-    this.navCtrl.push('RegistroPage');
-  }
+ logout(){
+   this.navCtrl.push('LoginPage');
+ }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    console.log('ionViewDidLoad PerfilPage');
   }
 
 }
