@@ -18,7 +18,7 @@ import { LoginPageModule } from '../pages/login/login.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    LoginPageModule,
+    LoginPageModule
    
   ],
   bootstrap: [IonicApp],
