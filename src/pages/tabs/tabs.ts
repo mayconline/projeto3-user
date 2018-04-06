@@ -18,6 +18,7 @@ export class TabsPage {
 
   tab1 = 'PerfilPage';
   tab2 = 'DestaquesPage';
+  tab3 = 'RecompensasPage';
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {

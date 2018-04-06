@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 
 /**
- * Generated class for the DestaquesPage page.
+ * Generated class for the MeusPontosPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,18 +10,15 @@ import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-destaques',
-  templateUrl: 'destaques.html',
+  selector: 'page-meus-pontos',
+  templateUrl: 'meus-pontos.html',
 })
-export class DestaquesPage {
+export class MeusPontosPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
   }
 
-
-  Pontos(){
-    this.navCtrl.push('MeusPontosPage');
- }
+ 
 
 
   voltarLogin(){
@@ -30,10 +27,10 @@ export class DestaquesPage {
      
    }
 
- 
+
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DestaquesPage');
+    console.log('ionViewDidLoad MeusPontosPage');
   }
 
 }

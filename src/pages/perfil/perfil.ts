@@ -23,14 +23,17 @@ export class PerfilPage {
 
  
 
+  Pontos(){
+    this.navCtrl.push('MeusPontosPage');
+ }
+
+
   voltarLogin(){
     
-  
-   this.app.getRootNav().setRoot( 'LoginPage' );
-    
-  
-  }
-  
+    this.app.getRootNav().setRoot( 'LoginPage' );
+     
+   }
+
 
  
  ionViewDidLoad() {

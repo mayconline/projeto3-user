@@ -1,0 +1,106 @@
+
+<ion-header>
+
+    <ion-navbar>
+        <ion-row text-center>
+            <ion-col col-4 >
+              
+                <ion-buttons>
+                 <button  (click)="Pontos()" ion-button clear  > Meus Pontos <br>550
+                </button> 
+        </ion-buttons>
+
+        </ion-col>
+            <ion-col col-4 offset-2 > Olá Usuario <br> Bem Vindo!!! </ion-col>
+            <ion-col col-2>
+                        <ion-buttons end>
+                            <button ion-button icon-only  (click)="voltarLogin()">
+                              <ion-icon name="exit"></ion-icon>
+                            </button>
+                          </ion-buttons>
+            </ion-col>
+        </ion-row>
+      </ion-navbar>
+    
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-grid>
+        <ion-row>
+            <ion-col col-12> <h4 text-center >Filtros</h4> </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12> 
+                <ion-item >   
+                <ion-icon name="search" item-content ></ion-icon>
+                <ion-input type="search" placeholder="Filtre pelo Nome"></ion-input>             
+              </ion-item>
+            </ion-col>
+        </ion-row>
+        
+        <ion-row>
+            <ion-col col-12> <h4 text-center>Troque seus Pontos</h4> </ion-col>
+        </ion-row>
+  
+        <ion-row>
+            <ion-col col-12>
+
+                <ion-list>
+                    <ion-item >
+                      
+                      <ion-avatar item-start>
+                        <img src="assets/imgs/produtos/iconProduto.png">
+                      </ion-avatar>
+                      <h2>Produto 1</h2>
+                      <p>Resgate: 200 Pontos</p>
+                     
+                      <button color="secondary" ion-button icon-only item-content clear>
+                          <ion-icon name="information-circle"></ion-icon>
+                        </button>
+                    </ion-item>
+
+
+                    <ion-item >
+                        
+                        <ion-avatar item-start>
+                          <img src="assets/imgs/produtos/iconProduto.png">
+                        </ion-avatar>
+                        <h2>Produto 2</h2>
+                        <p>Resgate: 50 Pontos</p>
+
+                        <button color="secondary" ion-button icon-only item-content clear>
+                            <ion-icon name="information-circle"></ion-icon>
+                          </button>
+                       
+                      </ion-item>
+                   
+                  </ion-list>
+
+                
+            
+            </ion-col>
+        </ion-row>
+          
+       
+      </ion-grid>
+
+      <ion-grid>
+          <ion-row>
+              <ion-col col-12>
+                  
+                    <ion-buttons>
+                        <button ion-button block round outline icon-left>
+                            <ion-icon name="list-box"></ion-icon>
+                          Meus Resgates </button>  
+                    </ion-buttons>                
+                  
+    
+                 
+              </ion-col>
+            </ion-row>
+      
+      </ion-grid>
+
+</ion-content>
