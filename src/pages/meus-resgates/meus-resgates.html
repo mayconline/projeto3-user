@@ -1,0 +1,96 @@
+<!--
+  Generated template for the MeusPontosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+      <ion-row text-center>
+        <ion-col col-4>
+  
+          <ion-buttons>
+            <button ion-button clear> Meus Pontos
+              <br> 550
+            </button>
+          </ion-buttons>
+  
+        </ion-col>
+        <ion-col col-4 offset-2> Olá Usuario
+          <br> Bem Vindo!!! </ion-col>
+        <ion-col col-2>
+          <ion-buttons end>
+            <button ion-button icon-only (click)="voltarLogin()">
+              <ion-icon name="exit"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+      <ion-grid>
+        <ion-row>
+            <ion-col col-12> <h4 text-center >Filtros</h4> </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col col-12> 
+                <ion-item >   
+                <ion-icon name="search" item-content ></ion-icon>
+                <ion-input type="search" placeholder="Filtre por CPF ou Status"></ion-input>             
+              </ion-item>
+            </ion-col>
+        </ion-row>
+        
+        <ion-row>
+            <ion-col col-12> <h4 text-center>Meus Resgates</h4> </ion-col>
+        </ion-row>
+  
+        <ion-row>
+            <ion-col col-12>
+             
+                <ion-list>  
+                    <ion-item>
+                      <ion-icon name="clock" item-content> </ion-icon>
+                       <h2>Produto 1 - Solicitado</h2>
+                      <h3> CPF: 999.999.999-99</h3>
+                      <p>Data: 08/04/2018 - 100 Pontos</p>
+                      
+                    </ion-item>
+ 
+  
+                      <ion-item>
+                          <ion-icon name="close-circle" item-content> </ion-icon>
+                           <h2>Produto 1 - Cancelado</h2>
+                          <h3> CPF: 999.999.999-99</h3>
+                          <p>Data: 07/04/2018 - 100 Pontos</p>
+                          
+                        </ion-item>
+
+
+                         
+                    <ion-item>
+                        <ion-icon name="checkmark-circle-outline" item-content> </ion-icon>
+                         <h2>Produto 2 - Entregue</h2>
+                        <h3> CPF: 999.999.999-99</h3>
+                        <p>Data: 20/03/2018 - 50 Pontos</p>
+                        
+                      </ion-item>
+                  </ion-list>
+            
+            </ion-col>
+        </ion-row>
+          
+        <ion-row>
+            <ion-col>
+              <h3 text-center> Total Acumulado: 550 Pontos</h3>
+            </ion-col>
+        </ion-row>
+  
+  
+      </ion-grid>
+  
+  </ion-content>

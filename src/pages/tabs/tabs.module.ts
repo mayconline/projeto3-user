@@ -5,6 +5,7 @@ import { PerfilPageModule } from '../perfil/perfil.module';
 import { DestaquesPageModule } from '../destaques/destaques.module';
 import { MeusPontosPageModule } from '../meus-pontos/meus-pontos.module';
 import { RecompensasPageModule } from '../recompensas/recompensas.module';
+import { MeusResgatesPageModule } from '../meus-resgates/meus-resgates.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { RecompensasPageModule } from '../recompensas/recompensas.module';
     PerfilPageModule,
     DestaquesPageModule,
     MeusPontosPageModule,
-    RecompensasPageModule
+    RecompensasPageModule,
+    MeusResgatesPageModule
+    
   ],
 })
 export class TabsPageModule {}

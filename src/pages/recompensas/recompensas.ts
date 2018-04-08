@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ModalController } from 'ionic-angular';
 
 /**
  * Generated class for the RecompensasPage page.
@@ -14,8 +14,9 @@ import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
   templateUrl: 'recompensas.html',
 })
 export class RecompensasPage {
+  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public modal: ModalController) {
   }
 
 
@@ -23,6 +24,9 @@ export class RecompensasPage {
     this.navCtrl.push('MeusPontosPage');
  }
 
+ meuResgate(){
+  this.navCtrl.push('MeusResgatesPage');
+ }
 
   voltarLogin(){
     
@@ -30,9 +34,30 @@ export class RecompensasPage {
      
    }
 
+  
+
+   produtos = {descricao:  [{
+    nome:'Produto 1',
+    ponto:100
+  } ,
+  {
+    nome:'Produto 2',
+    ponto:100
+  } ]
+};   
+   
+   
+   abrirModal(){
+   
+      const meuModal = this.modal.create('ModalRecompensaPage', {data:this.produtos})
+      meuModal.present();
+      
+   }
+  
+   
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RecompensasPage');
+    console.log('produtos');
   }
 
 }

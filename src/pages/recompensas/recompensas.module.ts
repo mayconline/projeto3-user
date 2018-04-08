@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { RecompensasPage } from './recompensas';
+import { ModalRecompensaPageModule } from '../modal-recompensa/modal-recompensa.module';
+
 
 @NgModule({
   declarations: [
@@ -8,6 +10,8 @@ import { RecompensasPage } from './recompensas';
   ],
   imports: [
     IonicPageModule.forChild(RecompensasPage),
+    ModalRecompensaPageModule
+  
   ],
 })
 export class RecompensasPageModule {}
