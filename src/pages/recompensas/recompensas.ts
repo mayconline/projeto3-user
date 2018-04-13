@@ -17,6 +17,8 @@ export class RecompensasPage {
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public modal: ModalController) {
+   
+ 
   }
 
 
@@ -34,22 +36,22 @@ export class RecompensasPage {
      
    }
 
-  
 
-   produtos = {descricao:  [{
+
+   produtos =  [{
     nome:'Produto 1',
     ponto:100
   } ,
   {
     nome:'Produto 2',
-    ponto:100
-  } ]
-};   
+    ponto:50
+  } ];
+  
+  
    
+   abrirModal(produto){
    
-   abrirModal(){
-   
-      const meuModal = this.modal.create('ModalRecompensaPage', {data:this.produtos})
+      const meuModal = this.modal.create('ModalRecompensaPage', {data:produto})
       meuModal.present();
       
    }

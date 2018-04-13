@@ -50,35 +50,21 @@
         <ion-row>
             <ion-col col-12>
 
-                <ion-list>
+                <ion-list *ngFor="let produto of produtos">
                     <ion-item >
                       
                       <ion-avatar item-start>
                         <img src="assets/imgs/produtos/iconProduto.png">
                       </ion-avatar>
-                      <h2>{{produtos.descricao[0].nome}}</h2>
-                      <p>Resgate: {{produtos.descricao[0].ponto }} pontos</p>
+                      <h2>{{produto.nome}}</h2>
+                     <p>Resgate: {{produto.ponto }} pontos</p> 
                      
                      
-                      <button (click)="abrirModal()" color="secondary" ion-button icon-only item-content clear>
+                      <button (click)="abrirModal(produto)" color="secondary" ion-button icon-only item-content clear>
                           <ion-icon name="information-circle"></ion-icon>
                         </button>
                     </ion-item>
-               
-                    <ion-item >
-                        
-                        <ion-avatar item-start>
-                          <img src="assets/imgs/produtos/iconProduto.png">
-                        </ion-avatar>
-                        <h2>{{produtos.descricao[1].nome}}</h2>
-                        <p>Resgate: {{ produtos.descricao[1].ponto}} pontos</p>
-
-                        <button (click)="abrirModal()" color="secondary" ion-button icon-only item-content clear>
-                            <ion-icon name="information-circle"></ion-icon>
-                          </button>
-                       
-                      </ion-item> 
-                   
+                
                   </ion-list>
 
                 

@@ -21,7 +21,7 @@ export class PerfilPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public app: App) {
   }
 
- 
+  
 
   Pontos(){
     this.navCtrl.push('MeusPontosPage');
