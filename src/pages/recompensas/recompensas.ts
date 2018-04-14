@@ -17,7 +17,7 @@ export class RecompensasPage {
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public modal: ModalController) {
-   
+   this.initializeItems();
  
   }
 
@@ -38,17 +38,41 @@ export class RecompensasPage {
 
 
 
-   produtos =  [{
-    nome:'Produto 1',
-    ponto:100
-  } ,
-  {
-    nome:'Produto 2',
-    ponto:50
-  } ];
-  
-  
+    
    
+  nome: string = '';
+  produtos: any;
+
+  initializeItems() {
+  
+    this.produtos =  [{
+      nome:'Carro',
+      ponto:100
+    } ,
+    {
+      nome:'Blusa',
+      ponto:50
+    } ];
+  
+  }
+
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.initializeItems();
+
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.produtos = this.produtos.filter((produto) => {
+        return (produto.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+
+
+
    abrirModal(produto){
    
       const meuModal = this.modal.create('ModalRecompensaPage', {data:produto})
