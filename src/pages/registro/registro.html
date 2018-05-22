@@ -1,55 +1,96 @@
 
 
 
-
 <ion-content padding>
-    <img class="banner" src="assets/imgs/logo2.png"   />
+
+
+
+        <form [formGroup]="form">
+               
+                <ion-item>
+                  <ion-label stacked>Nome</ion-label>
+                  <ion-input type="text" formControlName="name"></ion-input>
+                </ion-item>
+            
+                <ion-item>
+                  <ion-label stacked>CPF</ion-label>
+                  <ion-input type="text" formControlName="cpf"></ion-input>
+                </ion-item>
+            
+                <ion-item>
+                  <ion-label stacked>E-mail</ion-label>
+                  <ion-input type="email" formControlName="email"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!form.controls.email.valid && (form.controls.email.dirty || form.controls.email.touched)" color="danger">
+                  <div [hidden]="!form.controls.email.errors.required">
+                    O campo é obrigatório
+                  </div>
+                  <div [hidden]="!form.controls.email.errors.email">
+                    O e-mail é invalido
+                  </div>
+                </ion-item>
+            
+                <ion-item>
+                  <ion-label stacked>Senha</ion-label>
+                  <ion-input type="password" formControlName="password"></ion-input>
+                </ion-item>
+                <ion-item *ngIf="!form.controls.password.valid && (form.controls.password.dirty || form.controls.password.touched)" color="danger">
+                  <div [hidden]="!form.controls.password.errors.required">
+                    O campo é obrigatório
+                  </div>
+                </ion-item>
+            
+                <div padding>
+                  <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Criar conta</button>
+                </div>
+            </form>
+
+
+
+
+
+
+
+  <!--  <img class="banner" src="assets/imgs/logoempresa.png"   />
   
       <ion-card class="card"> 
   
           <ion-card-header  >
             <img class="logo" src="assets/imgs/logo.png"/>
-            <h1 ion-text>Crie sua Conta</h1>
-          </ion-card-header>
+            <h1 ion-text>CRIE SUA CONTA </h1>
+         </ion-card-header>
         
           <ion-card-content>
             
               <ion-item>
                   
-                  <ion-label >Email:</ion-label>
-                  <ion-input type="text" value="" placeholder="Digite seu Email"></ion-input>
-                  <ion-icon name="mail" item-content></ion-icon>
+                  <ion-label stacked>Email:</ion-label>
+                  <ion-input type="email" [(ngModel)]='user.email' placeholder="Digite seu Email"></ion-input>
+                  <ion-icon name="mail" item-end></ion-icon>
               </ion-item>
               <ion-item>
-                  <ion-label > Senha:</ion-label>
-                  <ion-input type="password" value="" placeholder="Digite sua Senha"></ion-input>
-                  <ion-icon name="key" item-content></ion-icon>
+                  <ion-label stacked> Senha:</ion-label>
+                  <ion-input type="password" [(ngModel)]='user.password' placeholder ="Crie uma Senha"></ion-input>
+                  <ion-icon name="key" item-end></ion-icon>
               </ion-item>
-              <ion-item>
-                  <ion-label >Nome:</ion-label>
-                  <ion-input type="text" value="" placeholder="Digite seu Nome"></ion-input>
-                  <ion-icon name="person" item-content></ion-icon>
-              </ion-item>
-              <ion-item>
-                  <ion-label >CPF:</ion-label>
-                  <ion-input type="text" value="" placeholder="Digite seu CPF"></ion-input>
-                  <ion-icon name="paper" item-content></ion-icon>
-              </ion-item>
-
   
-               
-  
-                <ion-item (click)="voltarLogin()">
+                <ion-item (click)="registrar(user)" *ngIf="user.email && user.password">
                     <button  ion-button color="secondary" outline block round icon-left>
                          <ion-icon name="person-add"></ion-icon> Criar Conta
                     </button>
                 </ion-item>
   
-               
-         
+  
+                <ion-item (click)="voltarLogin()">
+                        <button  ion-button color="secondary" outline block round icon-left>
+                             <ion-icon name="person-add"></ion-icon> Voltar para Login
+                        </button>
+                    </ion-item>
+      
+  
   
           </ion-card-content>
         
-        </ion-card>
+        </ion-card> -->
   
   </ion-content>

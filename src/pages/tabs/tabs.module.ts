@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { TabsPage } from './tabs';
-import { PerfilPageModule } from '../perfil/perfil.module';
+
+
 import { DestaquesPageModule } from '../destaques/destaques.module';
-import { MeusPontosPageModule } from '../meus-pontos/meus-pontos.module';
+
 import { RecompensasPageModule } from '../recompensas/recompensas.module';
-import { MeusResgatesPageModule } from '../meus-resgates/meus-resgates.module';
+import { UsuariosPageModule } from '../usuarios/usuarios.module';
+import { HistoricoResgatePageModule } from '../meus-resgates/historico-resgate.module';
 
 @NgModule({
   declarations: [
@@ -13,12 +15,10 @@ import { MeusResgatesPageModule } from '../meus-resgates/meus-resgates.module';
   ],
   imports: [
     IonicPageModule.forChild(TabsPage),
-    PerfilPageModule,
+    UsuariosPageModule,
     DestaquesPageModule,
-    MeusPontosPageModule,
     RecompensasPageModule,
-    MeusResgatesPageModule
-    
-  ],
+    HistoricoResgatePageModule
+  ]
 })
 export class TabsPageModule {}

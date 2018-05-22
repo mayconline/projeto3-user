@@ -1,16 +1,21 @@
-<!--
-  Generated template for the ModalRecompensaPage page.
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
+
 <ion-header>
 
   <ion-navbar>
-    <ion-title> Deseja Resgatar?</ion-title>
-    <ion-buttons end>
-        <button ion-button (click)="fechar()">Fechar</button>
-    </ion-buttons>
+    <ion-row text-center>
+    
+      <ion-col col-4 offset-6> Olá 
+          {{user.name}}
+        <br> Bem Vindo!!! </ion-col>
+      <ion-col col-2>
+        <ion-buttons end>
+          <button ion-button icon-only (click)="sair()">
+            <ion-icon name="exit"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
   </ion-navbar>
 
 </ion-header>
@@ -18,18 +23,105 @@
 
 <ion-content padding>
   
-    <ion-grid>
+
+    <form [formGroup]="form">
+       
       <ion-row>
-          <ion-col col-12>
-              <ion-item>
-                  <ion-label> CPF Do Cliente:</ion-label>
-                  <ion-input type="text" value="999.999.999-99"></ion-input>
-              </ion-item>
+        <ion-col col-6>
+          
+          <ion-item>
+              <ion-label>Produto</ion-label>
+              <ion-input type="text" formControlName="prodNome"></ion-input>
+          </ion-item>
+          </ion-col>
+          
+  
+          <ion-col col-6>
+          <ion-item>
+              <ion-label> Pontos</ion-label>
+              <ion-input type="text" formControlName="pontosProd" ></ion-input>
+          </ion-item> 
+      
+
+        </ion-col>
+      </ion-row>
+      
+    <!--    <ion-item>
+            <ion-label> Key Produto</ion-label>
+            <ion-input type="text" formControlName="prodKey" ></ion-input>
+        </ion-item> -->
+          
+       
+       <!--  
+        <ion-item>
+            <ion-label> Status</ion-label>
+            <ion-input type="text" formControlName="status" ></ion-input>
+        </ion-item> -->
+       
+
+        <ion-row>
+            <ion-col col-8 offset-4 >  
+                  <p>Meus Pontos : {{user.pontos}} </p>
+                  <p>Pontos Necessarios: {{prod.pontos}}</p>
+                  <p >Total de Pontos Restantes: {{user.pontos - prod.pontos}}</p>
+                  
+    
+            </ion-col>
+          </ion-row>
+
+ <ion-row>
+  <ion-col col-12>
+      <div *ngIf="user.pontos - prod.pontos < 0"> Não possui pontos suficientes</div>
+  </ion-col>
+
+ </ion-row>        
+    
+
+
+
+
+      <ion-row>
+          <ion-col col-6>
+              <ion-buttons start>
+                  <button (click)="fechar()" ion-button icon-left> 
+                      <ion-icon name="close"></ion-icon>
+                    
+                    Cancelar</button>
+                  
+              </ion-buttons>
           </ion-col>
 
-      </ion-row>
+
+          <ion-col col-6>
+            
+              <ion-buttons end>
+                  <button ion-button icon-left type="submit" [disabled]="user.pontos - prod.pontos < 0" (click)="onSubmit()">
+                   
+                      <ion-icon name="checkmark"></ion-icon>
+                    
+                    Confirmar</button>
+                  
+              </ion-buttons>
+
+            </ion-col>
+            
+          </ion-row>
 
 
+    </form> 
+
+
+
+</ion-content>
+
+
+
+<!--
+        <div padding>
+          <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Entrar</button>
+        </div> -->
+
+<!--
       <ion-row>
         <ion-col col-12>
             <ion-list>
@@ -39,7 +131,7 @@
                   <img src="assets/imgs/produtos/iconProduto.png">
                 </ion-avatar>
                 <h2>{{prod.nome}}</h2>
-                <p>Resgate: {{prod.ponto }} pontos</p>
+                <p>Resgate: {{prod.pontos }} pontos</p>
                
                
               </ion-item>
@@ -52,8 +144,8 @@
       <ion-row>
         <ion-col col-6 offset-6 >  
               <p>Meus Pontos : 950 </p>
-              <p>Pontos Necessarios: {{prod.ponto}}</p>
-              <p>Total de Pontos Restantes: {{950 - prod.ponto}}</p>
+              <p>Pontos Necessarios: {{prod.pontos}}</p>
+              <p>Total de Pontos Restantes: {{950 - prod.pontos}}</p>
 
         </ion-col>
       </ion-row>
@@ -72,16 +164,20 @@
 
 
           <ion-col col-6>
-              <ion-buttons end>
-                  <button (click)="fechar()" ion-button icon-left> 
+
+              
+          <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Confirmar</button>
+                
+            
+             <!-- <ion-buttons end>
+                  <button (click)="irHistorico()" ion-button icon-left> 
                       <ion-icon name="checkmark"></ion-icon>
                     
                     Confirmar</button>
                   
-              </ion-buttons>
-          </ion-col>
-        </ion-row>
-
-    </ion-grid>  
-
-</ion-content>
+              </ion-buttons> 
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>  
+-->

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ModalRecompensaPage } from './modal-recompensa';
+import { HistoricoResgatePageModule } from '../meus-resgates/historico-resgate.module';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { ModalRecompensaPage } from './modal-recompensa';
   ],
   imports: [
     IonicPageModule.forChild(ModalRecompensaPage),
+    HistoricoResgatePageModule
   ],
 })
 export class ModalRecompensaPageModule {}

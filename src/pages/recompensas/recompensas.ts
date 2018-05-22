@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App, ModalController, ToastController } from 'ionic-angular';
+import { RecompensasProvider } from '../../providers/recompensas/recompensas';
+import { Observable } from 'rxjs/Observable';
 
-/**
- * Generated class for the RecompensasPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { AngularFireAuth } from 'angularfire2/auth';
+
 
 @IonicPage()
 @Component({
@@ -15,75 +14,91 @@ import { IonicPage, NavController, NavParams, App, ModalController } from 'ionic
 })
 export class RecompensasPage {
   
+  recompensas: Observable<any>;
+  user:any = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public app: App, public modal: ModalController) {
-   this.initializeItems();
+  constructor( private authService:AuthServiceProvider, private afAuth:AngularFireAuth,
+    private recompProvider:RecompensasProvider, private toast: ToastController,
+    public navCtrl: NavController, public navParams: NavParams, public app: App, public modal: ModalController) {
  
   }
-
-
-  Pontos(){
-    this.navCtrl.push('MeusPontosPage');
- }
-
- meuResgate(){
-  this.navCtrl.push('MeusResgatesPage');
- }
-
-  voltarLogin(){
-    
-    this.app.getRootNav().setRoot( 'LoginPage' );
-     
-   }
-
-
-
-    
+  
+  
+  //navegação
+ abrirModal(recompensa: Observable<any>){
    
-  nome: string = '';
-  produtos: any;
+    const meuModal = this.modal.create('ModalRecompensaPage', {recompensa:recompensa})
+    meuModal.present();
+    
+ }
 
-  initializeItems() {
-  
-    this.produtos =  [{
-      nome:'Carro',
-      ponto:100
-    } ,
-    {
-      nome:'Blusa',
-      ponto:50
-    } ];
-  
-  }
 
-  getItems(ev: any) {
+ irHistoricoResgate(){
+   this.navCtrl.push('HistoricoResgatePage');
+ }
+
+ sair(){
+  this.authService.logout();
+}
+
+
+
+
+obterUser(){
+  this.afAuth.authState.subscribe(firebaseUser =>{
+ if(firebaseUser){
+   const usuarioLogado = this.authService.getUserInfo().subscribe(userData =>{
+     this.user = userData;
+    
+  
+   })
+ }else {
+   this.user = {};
+ }
+})
+
+} 
+
+
+  
+
+
+
+ 
+
+ 
+
+  
+
+   // searchbar //
+
+   getItems(ev: any) {
     // Reset items back to all of the items
-    this.initializeItems();
+    this.recompensas = this.recompProvider.getAll();
 
     // set val to the value of the searchbar
     let val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
-      this.produtos = this.produtos.filter((produto) => {
-        return (produto.nome.toLowerCase().indexOf(val.toLowerCase()) > -1);
-      })
+      this.recompensas = this.recompensas
+        .map(pessoaList => pessoaList.filter((v) => {
+           
+               return v.nome.toLowerCase().indexOf(val.toLowerCase()) !== -1;
+            
+        }));
+     
     }
-  }
+  } // searchbar //
 
 
 
-   abrirModal(produto){
-   
-      const meuModal = this.modal.create('ModalRecompensaPage', {data:produto})
-      meuModal.present();
-      
-   }
-  
-   
+ 
+  ionViewWillLoad(){
+          //recupera e inicializa os itens do banco //
+          this.recompensas = this.recompProvider.getAll();
+          this.obterUser();
 
-  ionViewDidLoad() {
-    console.log('produtos');
-  }
+  } 
 
 }

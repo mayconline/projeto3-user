@@ -2,38 +2,48 @@
 
 
 <ion-content padding>
-  <img class="banner" src="assets/imgs/logo2.png"   />
 
-    <ion-card class="card"> 
+    <img class="banner" src="assets/imgs/logousuario.png"   />
 
+    <ion-card class="card">
         <ion-card-header  >
-          <img class="logo" src="assets/imgs/logo.png"/>
-          <h1 ion-text>Faça seu Login</h1>
-        </ion-card-header>
-      
-        <ion-card-content>
-          
-            <ion-item>
-                
-                <ion-label stacked>Email:</ion-label>
-                <ion-input type="text" value="" placeholder="Digite seu Email"></ion-input>
-                <ion-icon name="mail" item-end></ion-icon>
-            </ion-item>
-            <ion-item>
-                <ion-label stacked> Senha:</ion-label>
-                <ion-input type="password" value="" placeholder ="Digite sua Senha"></ion-input>
-                <ion-icon name="key" item-end></ion-icon>
-            </ion-item>
+            <img class="logo" src="assets/imgs/logo.png"/>
+            <h1 ion-text>Faça seu Login </h1>
+          </ion-card-header>
 
-              <ion-item>
+          <ion-card-content>
+              <form [formGroup]="form">
+                  <ion-item>
+                    <ion-label stacked>E-mail</ion-label>
+                    <ion-input type="email" formControlName="email"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="!form.controls.email.valid && (form.controls.email.dirty || form.controls.email.touched)" color="danger">
+                    <div [hidden]="!form.controls.email.errors.required">
+                      O campo é obrigatório
+                    </div>
+                    <div [hidden]="!form.controls.email.errors.email">
+                      O e-mail é invalido
+                    </div>
+                  </ion-item>
+              
+                  <ion-item>
+                    <ion-label stacked>Senha</ion-label>
+                    <ion-input type="password" formControlName="password"></ion-input>
+                  </ion-item>
+                  <ion-item *ngIf="!form.controls.password.valid && (form.controls.password.dirty || form.controls.password.touched)" color="danger">
+                    <div [hidden]="!form.controls.password.errors.required">
+                      O campo é obrigatório
+                    </div>
+                  </ion-item>
+              
+                  <div padding>
+                    <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Entrar</button>
+                  </div>
+              </form>
+
+              <ion-item (click)="irResetPage()">
                   <button ion-button clear item-right >
                       Recuperar senha?
-                  </button>
-              </ion-item>
-
-              <ion-item (click)="logar()">
-                  <button  ion-button color="secondary" outline block round icon-left>
-                       <ion-icon name="unlock"></ion-icon> Entrar 
                   </button>
               </ion-item>
 
@@ -43,8 +53,8 @@
               </ion-item>
 
 
-        </ion-card-content>
-      
-      </ion-card>
+          </ion-card-content>
+
+    </ion-card>
 
 </ion-content>
