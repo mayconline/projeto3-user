@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { PontosProvider } from '../../providers/pontos/pontos';
@@ -19,7 +19,7 @@ export class PontosPage {
   notas:Observable<any>;
   constructor( private afAuth: AngularFireAuth,
     private pontosProvider:PontosProvider,
-    private toast:ToastController,
+   
     public navCtrl: NavController, public navParams: NavParams,
   public modal:ModalController) {
 
