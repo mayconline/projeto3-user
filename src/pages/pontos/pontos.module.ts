@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { PontosPage } from './pontos';
+import { ModalNotasPageModule } from '../modal-notas/modal-notas.module';
 
 
 @NgModule({
@@ -8,8 +9,10 @@ import { PontosPage } from './pontos';
     PontosPage,
   ],
   imports: [
-    IonicPageModule.forChild(PontosPage)
+    IonicPageModule.forChild(PontosPage),
+    ModalNotasPageModule
 
-  ],
+  ]
+  
 })
 export class PontosPageModule {}

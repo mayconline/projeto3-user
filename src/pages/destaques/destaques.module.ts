@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { DestaquesPage } from './destaques';
+import { PontosPageModule } from '../pontos/pontos.module';
+import { UsuariosPageModule } from '../usuarios/usuarios.module';
 
 
 @NgModule({
@@ -9,6 +11,8 @@ import { DestaquesPage } from './destaques';
   ],
   imports: [
     IonicPageModule.forChild(DestaquesPage),
+    PontosPageModule,
+    UsuariosPageModule
    
   ],
 })

@@ -16,7 +16,7 @@ export class PontosProvider {
     
   }
 
-
+ 
   getAllNome(){
     
     return this.afDb.list(this.PATH, ref=> ref.orderByChild('nota'))

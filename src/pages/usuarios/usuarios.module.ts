@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { UsuariosPage } from './usuarios';
 import { EditarUsuarioPageModule } from '../editar-usuario/editar-usuario.module';
 
+
 @NgModule({
   declarations: [
     UsuariosPage,
@@ -10,6 +11,7 @@ import { EditarUsuarioPageModule } from '../editar-usuario/editar-usuario.module
   imports: [
     IonicPageModule.forChild(UsuariosPage),
     EditarUsuarioPageModule
+   
   ],
 })
 export class UsuariosPageModule {}

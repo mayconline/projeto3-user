@@ -3,10 +3,10 @@
     <ion-navbar>
         <ion-row text-center>
 
-            <ion-col col-3 class="ptitle">
+            <ion-col col-3 class="ptitle" (click)="irPontos()">
                 {{user.pontos}} <br> Pontos
               </ion-col>
-            <ion-col col-4 offset-3 class="ptitle"> Olá {{user.name}}
+            <ion-col col-4 offset-3 class="ptitle" (click)="irPerfil()"> Olá {{user.name}}
                 <br> Bem Vindo!!! </ion-col>
             <ion-col col-2>
                 <ion-buttons end>
@@ -65,7 +65,7 @@
         <ion-row>
             <ion-col no-padding col-6 *ngFor="let recompensa of recompensas | async">
                 <ion-list>
-                    <ion-item class="card-background-page">
+                    <ion-item class="card-background-page" (click)="abrirModal(recompensa)">
 
                         <ion-card>
                             <img class="imgdestaque" src="{{ recompensa.url }}" />

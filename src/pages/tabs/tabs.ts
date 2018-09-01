@@ -10,11 +10,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-
-  tabsRoot = 'HistoricoResgatePage'
+  tabsRoot = 'DestaquesPage'
+  tabsRoot3 = 'HistoricoResgatePage'
   tabsRoot2 = 'RecompensasPage'
-  tabsRoot3 = 'DestaquesPage'
-  tabsRoot4 = 'UsuariosPage'
+ 
+ 
 
 
   constructor(public navCtrl: NavController, private afAuth:AngularFireAuth, private toast: ToastController) {}

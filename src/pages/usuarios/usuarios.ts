@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
+
 import { Subscription } from 'rxjs/Subscription';
 
-import { UsuariosProvider } from '../../providers/usuarios/usuarios';
+
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
@@ -24,7 +24,7 @@ export class UsuariosPage {
   
   user:any ={};
 
-  constructor( private usuarioProvider:UsuariosProvider, private afAuth:AngularFireAuth,
+  constructor( private afAuth:AngularFireAuth,
     private authService:AuthServiceProvider,
     public navCtrl: NavController, public navParams: NavParams) {
 

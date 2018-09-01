@@ -1,0 +1,63 @@
+
+
+<ion-header id="header">
+ 
+  <ion-navbar>
+    <ion-title text-center>Nota Fiscal</ion-title>
+            <ion-buttons end>
+              <button ion-button icon-only (click)="fechar()">
+                <ion-icon name="close"></ion-icon> 
+              </button>
+            </ion-buttons>
+          
+     
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding id="content">
+
+  <ion-card class="card" padding>
+
+     
+    <ion-card-content>
+      <h4 text-center>Nota Fiscal: #{{nota.nota}}</h4>
+      <h4 text-center>Usuario: {{nota.NomeUser}}</h4>
+      <h4 ion-text color="laranja" text-center>CPF: {{nota.cpf}}</h4>
+      <h4 text-center>R$ {{nota.valor}} Gastos</h4>
+      <p ion-text color="laranja" text-center>{{nota.quantPontos}} Pontos {{nota.status}}</p>
+      <div  class="icone"><ion-icon color="secondary" class="icone"  name="checkmark-circle-outline" icon-only> </ion-icon></div>
+      
+
+
+      <!--<span> Data de Solicitação: {{dataSolicitacao}}</span> -->
+      
+
+<!--<ion-row align-items-center>
+    <ion-col col-12> <h6 text-center>Status do Resgate</h6> </ion-col>
+
+   
+
+    <ion-col col-12 col-sm  align-self-center>
+        <div class="alinha" text-center>
+        <div class="iconeVerde"><ion-icon item-content item-start  name='paper-plane'><p class="texto">Solicitado</p></ion-icon></div>     
+        <div class="barraVerde"></div>
+        <div [ngClass]="{'iconePreto':resgate.status === 'Solicitado','iconeVerde':resgate.status === 'Aguardando',  'iconeVerde2':resgate.status === 'Entregue'}"><ion-icon item-content item-start  name='clock'><p class="texto">Aguardando</p></ion-icon></div>
+        <div [ngClass]="{'barraCinza': resgate.status ==='Solicitado','barraVerde2': resgate.status ==='Entregue','barraVerde': resgate.status ==='Aguardando' }"></div>
+        <div [ngClass]="{'iconePreto':resgate.status === 'Solicitado','iconePreto2':resgate.status === 'Aguardando',  'iconeVerde2':resgate.status === 'Entregue'}"><ion-icon item-content item-start  name='checkmark-circle'><p class="texto">Finalizado</p></ion-icon></div>
+      </div>
+     
+    </ion-col>
+    <ion-col col-12> <h6>Previsão de Entrega: {{dataEntre}}</h6></ion-col>
+   
+    
+  
+  </ion-row> -->
+
+    </ion-card-content>
+
+  </ion-card>
+
+ 
+</ion-content>
+

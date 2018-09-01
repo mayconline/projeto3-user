@@ -22,7 +22,7 @@ export class RecompensasPage {
     public navCtrl: NavController, public navParams: NavParams, public app: App, public modal: ModalController) {
  
   }
-   
+    
   searchBarOpen:boolean = false;
   hideBackButton:boolean = false;
 
@@ -48,6 +48,13 @@ export class RecompensasPage {
   this.authService.logout();
 }
 
+irPontos(){
+  this.navCtrl.push('PontosPage')
+}
+
+irPerfil(){
+  this.navCtrl.push('UsuariosPage')
+}
 
 
 
