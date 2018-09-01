@@ -10,12 +10,14 @@ import { UsuariosProvider } from '../../providers/usuarios/usuarios';
 export class EditarUsuarioPage {
   usuario:any;
   form: FormGroup;
+  pontos:number;
  
 
   constructor(private usuarioProvider:UsuariosProvider, private formBuilder:FormBuilder,
     public navCtrl: NavController, public navParams: NavParams, private toast:ToastController) {
 
     this.usuario = this.navParams.data.usuario || {};
+    this.pontos = this.navParams.data.usuario.pontos;
     this.createForm();
     }
 
@@ -24,8 +26,9 @@ export class EditarUsuarioPage {
       this.form = this.formBuilder.group({
         key:[this.usuario.key],
         name: [this.usuario.name, [Validators.required] ],
-        cpf: [this.usuario.cpf, [Validators.required] ]
-        
+        cpf: [this.usuario.cpf, [Validators.required] ],
+        pontos:[this.pontos],
+        role:[this.usuario.role]
       });
 
       
@@ -49,8 +52,6 @@ export class EditarUsuarioPage {
   }  
   
 
-  ionViewDidLoad() {
-    console.log('usuario');
-  }
+  
 
 }

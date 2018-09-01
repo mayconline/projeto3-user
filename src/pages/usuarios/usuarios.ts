@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 
 import { UsuariosProvider } from '../../providers/usuarios/usuarios';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -28,25 +29,29 @@ export class UsuariosPage {
     public navCtrl: NavController, public navParams: NavParams) {
 
      
-     this.obterUser();
 
   }
 
 
-  obterUser(){
-    this.afAuth.authState.subscribe(firebaseUser =>{
-   if(firebaseUser){
-     const usuarioLogado = this.authService.getUserInfo().subscribe(userData =>{
-       this.user = userData;
-      
-    
-     })
-   }else {
-     this.user = {};
-   }
-  })
-  
-  } 
+ 
+  //subscriber para pegar os dados do usuario
+  user$:Subscription;
+  userinfo$:Subscription;
+   obterUser() {
+  this.user$ =  this.afAuth.authState.subscribe(firebaseUser => {
+      if (firebaseUser) {
+      this.userinfo$ =  this.authService.getUserInfo().subscribe(userData => {
+          this.user = userData;
+          
+
+
+        })
+      } else {
+        this.user = {};
+      }
+    })
+
+  }
 
 
   editarUser(usuario:any){
@@ -54,9 +59,16 @@ export class UsuariosPage {
 
   }
 
+  ionViewWillLoad(){
+    this.obterUser();
+  }
 
-
-
+  ionViewWillUnload(){
+   
+    this.user$.unsubscribe();
+    this.userinfo$.unsubscribe();  
+  
+  } 
 
 
 

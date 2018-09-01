@@ -5,13 +5,9 @@ import { Observable } from 'rxjs/Observable';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { NewsProvider } from '../../providers/news/news';
+import { Subscription } from 'rxjs/Subscription';
 
-/**
- * Generated class for the DestaquesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -23,33 +19,36 @@ export class DestaquesPage {
   recompensas: Observable <any>;
   user:any ={};
 
+
   constructor( private afAuth:AngularFireAuth,
      private recompProvider:RecompensasProvider, private authService:AuthServiceProvider,
     public navCtrl: NavController, public navParams: NavParams, public app: App,
   private newservice:NewsProvider) {}
 
  
-  
-  
-obterUser(){
-  this.afAuth.authState.subscribe(firebaseUser =>{
- if(firebaseUser){
-   const usuarioLogado = this.authService.getUserInfo().subscribe(userData =>{
-     this.user = userData;
-    
-  
-   })
- }else {
-   this.user = {};
- }
-})
+  //subscrever para pegar dados dos usuarios
+  user$:Subscription;
+  userinfo$:Subscription;
+  obterUser() {
+  this.user$ =  this.afAuth.authState.subscribe(firebaseUser => {
+      if (firebaseUser) {
+      this.userinfo$ =   this.authService.getUserInfo().subscribe(userData => {
+          this.user = userData;
 
-} 
+
+        })
+      } else {
+        this.user = {};
+      }
+    })
+ 
+  }
 
  
 
  
    sair(){
+ 
     this.authService.logout();
   }
  
@@ -64,9 +63,15 @@ ionViewWillLoad(){
   this.noticias = this.newservice.getAll();
 
   this.obterUser(); 
-
+ 
 
 } 
+
+ionViewWillUnload(){
+  this.user$.unsubscribe();
+  this.userinfo$.unsubscribe();
+  
+}
 
 
 }

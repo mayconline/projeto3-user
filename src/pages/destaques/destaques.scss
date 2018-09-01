@@ -7,14 +7,26 @@ page-destaques {
 }
 
 .imgdestaque {
-  height: 130px;
+  height: 130px; 
   
 }
 
+
+
+.swiper-pagination {
+  bottom: 0px;
+}
+
 .imgslide{
-  height: 150px;
+ // height: 150px;
   width: 100%;
-  text-align: center;
+ // height: 100%;
+ //width: 30rem;
+ height: 25rem;
+ //height: auto;
+ //margin-top:-20rem;
+text-align: center;
+display: block;
 }
 
 

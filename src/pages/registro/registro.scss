@@ -1,5 +1,11 @@
 page-registro {
 
+    .clogin {
+        background-color: #8A2BE2;
+        color:white;
+
+    }
+
     .logo {     
         width: 70px;
         margin: 0 auto;
@@ -7,11 +13,19 @@ page-registro {
     
     h1{
         text-align: center;
-        padding: 20px;
+        padding: 15px;
+       
     }
+   
 
+    h2{
+        text-align: center;
+        padding: 15px;
+     
+    }
     .card {
         margin: 0 auto;
+      //  background-color:rgba($color: #ffffff, $alpha: 0.8);
         
     }
     .banner{
@@ -20,6 +34,10 @@ page-registro {
         padding: 20px;
         margin: 0 auto;
        
+    }
+
+    .copyright{
+        padding: 2rem;
     }
 
 }

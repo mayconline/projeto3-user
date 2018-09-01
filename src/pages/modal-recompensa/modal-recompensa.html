@@ -1,183 +1,111 @@
-
-
-<ion-header>
+<ion-header id="header">
 
   <ion-navbar>
-    <ion-row text-center>
-    
-      <ion-col col-4 offset-6> Olá 
-          {{user.name}}
-        <br> Bem Vindo!!! </ion-col>
-      <ion-col col-2>
-        <ion-buttons end>
-          <button ion-button icon-only (click)="sair()">
-            <ion-icon name="exit"></ion-icon>
-          </button>
-        </ion-buttons>
-      </ion-col>
-    </ion-row>
+    <ion-title text-center>Deseja Resgatar?</ion-title> 
+    <ion-buttons end>
+      <button ion-button icon-only (click)="fechar()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  
+<ion-content padding id="content">
 
-    <form [formGroup]="form">
-       
-      <ion-row>
-        <ion-col col-6>
-          
-          <ion-item>
-              <ion-label>Produto</ion-label>
-              <ion-input type="text" formControlName="prodNome"></ion-input>
-          </ion-item>
-          </ion-col>
-          
-  
-          <ion-col col-6>
-          <ion-item>
-              <ion-label> Pontos</ion-label>
-              <ion-input type="text" formControlName="pontosProd" ></ion-input>
-          </ion-item> 
-      
 
-        </ion-col>
-      </ion-row>
-      
-    <!--    <ion-item>
-            <ion-label> Key Produto</ion-label>
-            <ion-input type="text" formControlName="prodKey" ></ion-input>
-        </ion-item> -->
-          
-       
-       <!--  
-        <ion-item>
-            <ion-label> Status</ion-label>
-            <ion-input type="text" formControlName="status" ></ion-input>
-        </ion-item> -->
-       
+  <form [formGroup]="form">
+
+
+
+    <ion-card padding>
+      <img *ngIf="prod.url" src="{{ prod.url }}" />
+
+      <ion-card-content>
 
         <ion-row>
-            <ion-col col-8 offset-4 >  
-                  <p>Meus Pontos : {{user.pontos}} </p>
-                  <p>Pontos Necessarios: {{prod.pontos}}</p>
-                  <p >Total de Pontos Restantes: {{user.pontos - prod.pontos}}</p>
-                  
-    
-            </ion-col>
-          </ion-row>
 
- <ion-row>
-  <ion-col col-12>
-      <div *ngIf="user.pontos - prod.pontos < 0"> Não possui pontos suficientes</div>
-  </ion-col>
-
- </ion-row>        
-    
-
-
-
-
-      <ion-row>
           <ion-col col-6>
-              <ion-buttons start>
-                  <button (click)="fechar()" ion-button icon-left> 
-                      <ion-icon name="close"></ion-icon>
-                    
-                    Cancelar</button>
-                  
-              </ion-buttons>
+
+            <ion-item>
+              <ion-label floating>Produto</ion-label>
+              <ion-input readonly type="text" formControlName="prodNome"></ion-input>
+            </ion-item>
           </ion-col>
 
 
           <ion-col col-6>
-            
-              <ion-buttons end>
-                  <button ion-button icon-left type="submit" [disabled]="user.pontos - prod.pontos < 0" (click)="onSubmit()">
-                   
-                      <ion-icon name="checkmark"></ion-icon>
-                    
-                    Confirmar</button>
-                  
-              </ion-buttons>
-
-            </ion-col>
-            
-          </ion-row>
+            <ion-item>
+              <ion-label floating> Pontos</ion-label>
+              <ion-input readonly type="text" formControlName="pontosProd"></ion-input>
+            </ion-item>
 
 
-    </form> 
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+
+          <ion-col col-12>
+            <ion-item>
+
+              <p>Meus Pontos: {{user.pontos}} </p>
+              <p ion-text color="danger">Pontos Necessarios: {{prod.pontos}}</p>
+              <div *ngIf="user.pontos - prod.pontos > 0">
+                <p ion-text color="secondary">Pontos Restantes: {{user.pontos - prod.pontos}}</p>
+              </div>
+              <ion-row>
+                <ion-col col-12>
+                  <div *ngIf="user.pontos - prod.pontos < 0">
+                    <p ion-text text-center color="danger">Não possui pontos suficientes</p>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-item>
 
 
+          </ion-col>
+
+        </ion-row>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col col-6>
+          <ion-buttons start>
+            <button (click)="fechar()" color="danger" ion-button icon-left>
+              <ion-icon name="close"></ion-icon>
+
+              Cancelar</button>
+
+          </ion-buttons>
+        </ion-col>
+
+
+        <ion-col col-6>
+
+          <ion-buttons end>
+            <button color="secondary" ion-button icon-left type="submit" [disabled]="user.pontos - prod.pontos < 0" (click)="onSubmit()">
+
+              <ion-icon name="checkmark"></ion-icon>
+
+              Confirmar</button>
+
+          </ion-buttons>
+
+        </ion-col>
+
+      </ion-row>
+
+
+
+    </ion-card>
+
+
+  </form>
 
 </ion-content>
 
 
 
-<!--
-        <div padding>
-          <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Entrar</button>
-        </div> -->
-
-<!--
-      <ion-row>
-        <ion-col col-12>
-            <ion-list>
-              <ion-item >
-                  
-                <ion-avatar item-start>
-                  <img src="assets/imgs/produtos/iconProduto.png">
-                </ion-avatar>
-                <h2>{{prod.nome}}</h2>
-                <p>Resgate: {{prod.pontos }} pontos</p>
-               
-               
-              </ion-item>
-         
-            </ion-list>
-        </ion-col>
-      </ion-row>
-
-
-      <ion-row>
-        <ion-col col-6 offset-6 >  
-              <p>Meus Pontos : 950 </p>
-              <p>Pontos Necessarios: {{prod.pontos}}</p>
-              <p>Total de Pontos Restantes: {{950 - prod.pontos}}</p>
-
-        </ion-col>
-      </ion-row>
-
-
-        <ion-row>
-          <ion-col col-6>
-              <ion-buttons start>
-                  <button (click)="fechar()" ion-button icon-left> 
-                      <ion-icon name="close"></ion-icon>
-                    
-                    Cancelar</button>
-                  
-              </ion-buttons>
-          </ion-col>
-
-
-          <ion-col col-6>
-
-              
-          <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Confirmar</button>
-                
-            
-             <!-- <ion-buttons end>
-                  <button (click)="irHistorico()" ion-button icon-left> 
-                      <ion-icon name="checkmark"></ion-icon>
-                    
-                    Confirmar</button>
-                  
-              </ion-buttons> 
-            </ion-col>
-          </ion-row>
-        </form>
-      </ion-grid>  
--->

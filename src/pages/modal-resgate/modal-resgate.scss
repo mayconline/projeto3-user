@@ -1,0 +1,105 @@
+page-modal-resgate {
+
+    background-color: rgba(0,0,0,0.5);
+
+    #header{
+        top:8%
+    }
+ 
+    #content{
+        top:8%;
+        width: 100%;
+        height: 80%;
+    }
+
+    .card {
+        width: 100%;
+        margin: auto 0 ;
+        
+
+    }
+
+
+    //
+
+    .barraVerde {
+        width: 4rem;
+        height:5px;
+        background-color: green;   
+        float: left;
+        margin:20px 5px 5px 0;
+    
+    }
+    .barraVerde2 {
+        width: 4rem;
+        height:5px;
+        background-color: green;   
+        float: left;
+        margin:20px 5px 5px 0;
+    
+    }
+
+    .barraCinza {
+        width: 4rem;
+        height:5px;
+        background-color:rgba(227, 227, 227, 0.7);  
+        float: left; 
+        margin:20px 5px 5px 0;
+   
+    }
+
+    .iconeVerde{
+        font-size: 4rem; //Preferred size here
+        float: left;
+        color:green;
+       
+        
+    }
+
+    .iconeVerde2{
+        font-size: 4rem; //Preferred size here
+        float: left;
+        color:green;
+       
+        
+    }
+    
+  
+    .iconePreto {
+        font-size: 4rem; //Preferred size here
+        float: left;
+        color: rgba(227, 227, 227, 0.7); 
+       
+    }
+
+    
+    .iconePreto2 {
+        font-size: 4rem; //Preferred size here
+        float: left;
+        color: rgba(227, 227, 227, 0.7); 
+       
+    }
+
+
+
+
+
+  
+  .alinha{
+      text-align: center;
+      margin: 0 auto;
+  }
+    .texto{
+        font-size: 1rem;
+    }
+
+
+    ion-card img {
+        display: block;
+        width: 30rem;
+        height: 30rem;
+    }
+ 
+    //
+}
+

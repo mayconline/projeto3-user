@@ -22,6 +22,7 @@ export class LoginPage {
       this.createForm();
   }
 
+  
 
   createForm(){
     this.form = this.formBuilder.group({
@@ -36,8 +37,10 @@ export class LoginPage {
     if (this.form.valid) {
       this.authService.login(this.form.value)
         .then(() => {
-          //this.toast.create({ message: 'Seja Bem vindo', duration: 3000 }).present();
-          //this.navCtrl.setRoot('TabsPage');
+          this.toast.create({ 
+            message: ` Seja Bem Vindo : ${this.form.value.email}`,
+             duration: 3000 }).present();
+          
         })
         
         .catch((error: any) => {

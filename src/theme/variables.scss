@@ -37,8 +37,10 @@ $colors: (
   primary:    #488aff,
   secondary:  #32db64,
   danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  light:      #FFFFFF,
+  dark:       #222,
+  violet:     #8A2BE2,
+  laranja:    #FF7F50
 );
 
 
@@ -53,9 +55,25 @@ $colors: (
 // --------------------------------------------------
 // Material Design only Sass variables can go here
 
+//ion-toolbar
+$toolbar-background: #8A2BE2;
+$toolbar-text-color: #ffffff;
+$toolbar-active-color: #ffffff;
+$toolbar-inactive-color: #FFFFFF;
+//$tabs-md-tab-text-color: #8A2BE2;
 
+//ion-tabs 
+$tabs-md-tab-text-color-active:#8A2BE2;
+$tabs-md-tab-icon-color-active:#8A2BE2;
 
+//ion-item
+$item-md-paragraph-text-color: #FF7F50;
+$item-md-avatar-size:5rem;
 
+//imput
+
+$text-input-placeholder-color:#8A2BE2;
+$text-input-md-highlight-color:#8A2BE2;
 // App Windows Variables
 // --------------------------------------------------
 // Windows only Sass variables can go here

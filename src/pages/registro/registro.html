@@ -1,96 +1,80 @@
 
 
+<ion-header>
 
-<ion-content padding>
+  <ion-navbar>
+    <ion-title>Registre-se</ion-title>
+  </ion-navbar>
 
+</ion-header>
 
+  <ion-content padding class="clogin"> 
 
-        <form [formGroup]="form">
-               
-                <ion-item>
-                  <ion-label stacked>Nome</ion-label>
-                  <ion-input type="text" formControlName="name"></ion-input>
-                </ion-item>
-            
-                <ion-item>
-                  <ion-label stacked>CPF</ion-label>
-                  <ion-input type="text" formControlName="cpf"></ion-input>
-                </ion-item>
-            
-                <ion-item>
-                  <ion-label stacked>E-mail</ion-label>
-                  <ion-input type="email" formControlName="email"></ion-input>
-                </ion-item>
-                <ion-item *ngIf="!form.controls.email.valid && (form.controls.email.dirty || form.controls.email.touched)" color="danger">
-                  <div [hidden]="!form.controls.email.errors.required">
-                    O campo é obrigatório
-                  </div>
-                  <div [hidden]="!form.controls.email.errors.email">
-                    O e-mail é invalido
-                  </div>
-                </ion-item>
-            
-                <ion-item>
-                  <ion-label stacked>Senha</ion-label>
-                  <ion-input type="password" formControlName="password"></ion-input>
-                </ion-item>
-                <ion-item *ngIf="!form.controls.password.valid && (form.controls.password.dirty || form.controls.password.touched)" color="danger">
-                  <div [hidden]="!form.controls.password.errors.required">
-                    O campo é obrigatório
-                  </div>
-                </ion-item>
-            
-                <div padding>
-                  <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Criar conta</button>
-                </div>
-            </form>
-
-
-
-
-
-
-
-  <!--  <img class="banner" src="assets/imgs/logoempresa.png"   />
-  
-      <ion-card class="card"> 
-  
-          <ion-card-header  >
+    <ion-card class="card">
+        <ion-card-header  >
             <img class="logo" src="assets/imgs/logo.png"/>
-            <h1 ion-text>CRIE SUA CONTA </h1>
-         </ion-card-header>
-        
+          <h2 ion-text color="violet">Crie uma Conta</h2>
+          </ion-card-header>
+
           <ion-card-content>
-            
+              
+
+            <form [formGroup]="form">
+               
               <ion-item>
-                  
-                  <ion-label stacked>Email:</ion-label>
-                  <ion-input type="email" [(ngModel)]='user.email' placeholder="Digite seu Email"></ion-input>
-                  <ion-icon name="mail" item-end></ion-icon>
+                <ion-label stacked>Nome</ion-label>
+                <ion-input type="text" formControlName="name"></ion-input>
+                <ion-icon name="contact" color="violet" item-end></ion-icon>
               </ion-item>
+          
               <ion-item>
-                  <ion-label stacked> Senha:</ion-label>
-                  <ion-input type="password" [(ngModel)]='user.password' placeholder ="Crie uma Senha"></ion-input>
-                  <ion-icon name="key" item-end></ion-icon>
+                <ion-label stacked>CPF</ion-label>
+                <ion-input type="text" formControlName="cpf" [brmasker]="{mask:'000.000.000-00', len:14}"></ion-input>
+                <ion-icon name="keypad" color="violet" item-end></ion-icon>
               </ion-item>
-  
-                <ion-item (click)="registrar(user)" *ngIf="user.email && user.password">
-                    <button  ion-button color="secondary" outline block round icon-left>
-                         <ion-icon name="person-add"></ion-icon> Criar Conta
-                    </button>
-                </ion-item>
-  
-  
-                <ion-item (click)="voltarLogin()">
-                        <button  ion-button color="secondary" outline block round icon-left>
-                             <ion-icon name="person-add"></ion-icon> Voltar para Login
-                        </button>
-                    </ion-item>
-      
-  
-  
+          
+              <ion-item>
+                <ion-label stacked>E-mail</ion-label>
+                <ion-input type="email" formControlName="email"></ion-input>
+                <ion-icon name="mail" color="violet" item-end></ion-icon>
+              </ion-item>
+              <ion-item *ngIf="!form.controls.email.valid && (form.controls.email.dirty || form.controls.email.touched)" color="danger">
+                <div [hidden]="!form.controls.email.errors.required">
+                  e-mail vazio
+                </div>
+                <div [hidden]="!form.controls.email.errors.email">
+                  e-mail invalido
+                </div>
+              </ion-item>
+          
+              <ion-item>
+                <ion-label stacked>Senha</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+                <ion-icon name="key" color="violet" item-end></ion-icon>
+              </ion-item>
+              <ion-item *ngIf="!form.controls.password.valid && (form.controls.password.dirty || form.controls.password.touched)" color="danger">
+                <div [hidden]="!form.controls.password.errors.required">
+                  digite uma senha
+                </div>
+              </ion-item>
+          
+              <div padding>
+                <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Criar conta</button>
+              </div>
+          </form>
+
+
+             
+
+
           </ion-card-content>
-        
-        </ion-card> -->
+
+    </ion-card>
+
+    
+    <div class="copyright" text-center ion-text>© LineApp - aplicativo fidelidade</div>
+
+
+
   
   </ion-content>

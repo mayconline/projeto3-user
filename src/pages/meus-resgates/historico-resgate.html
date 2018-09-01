@@ -1,141 +1,209 @@
-<!--
-  Generated template for the MeusPontosPage page.
+<ion-header no-border>
+ 
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-    <ion-navbar>
-        <ion-row text-center>
-        
-          <ion-col col-4 offset-6> Olá {{user.name}}
-            <br> Bem Vindo!!! </ion-col>
-          <ion-col col-2>
-            <ion-buttons end>
-              <button ion-button icon-only (click)="sair()">
-                <ion-icon name="exit"></ion-icon>
-              </button>
-            </ion-buttons>
-          </ion-col>
-        </ion-row>
-      </ion-navbar>
-    
-  </ion-header>
-  
-  
-  <ion-content padding>
-<ion-grid>
-    <ion-row>
-        <ion-col col-12> <h4 text-center> Resgates Gerais</h4> </ion-col>
-    </ion-row>
-        <ion-row>
-          <ion-col col-12>
-              <div padding>
-                  <ion-segment [(ngModel)]="status" color="primary" >
-                    <ion-segment-button value="solicitados">
-                        <ion-icon name="clock"></ion-icon>
-                      Solicitados
-                    </ion-segment-button>
-                    <ion-segment-button value="finalizados">
-                        <ion-icon name="checkmark-circle-outline"></ion-icon>
-                      Finalizados
-                    </ion-segment-button>
-                  </ion-segment>
-                </div>
+  <ion-toolbar no-border no-padding>
+   
 
-          </ion-col>
-        </ion-row>
-        
-        <ion-row>
-            <ion-col col-12>
-                <div [ngSwitch]="status">
+
+      <ion-grid>
+          <ion-row>
+              <ion-col col-4>
+                  <ion-buttons start>
+
+                      <button clear ion-button icon-left *ngIf="!date && !searchBarOpen" (click)="clickDate()">
+
+                          <ion-icon  name="calendar"></ion-icon>
+                         <p ion-text >Data</p>
+                      </button>
+                  </ion-buttons>
+
+                  </ion-col>
+                  <ion-col col-4 *ngIf="!date && !searchBarOpen ">
+                      <h5 (click)="clickDate()" ion-text text-center color="laranja">{{mesHoje | uppercase}}</h5>
+                  </ion-col>
+                  <ion-col col-4>
+                  <ion-buttons end>
+
+                          <button clear ion-button icon-left *ngIf="!date && !searchBarOpen" (click)="barClick()">
   
-                    <ion-list *ngSwitchCase="'solicitados'" >
-    
-                        <ion-item-sliding *ngFor="let resgate of resgates | async" >  
-                            <ion-item *ngIf="resgate.Userkey == user.key" >
-                                 
-              
-                                      <ion-row>
-                            <ion-col col-5>
-                                                
-                               <h3> Produto: {{resgate.prodNome}}</h3>
-                               <p>{{resgate.pontosProd}} Pontos</p>
-                              
-                           
-                           </ion-col>
-                                    
-                           
-                                <ion-col col-7>
-                                      <h3> Usuario: {{resgate.userNome}} </h3> 
-                                  <p>Status: {{resgate.status}}</p>
-                              
-                       </ion-col>
-                                                    
-                      
-                                      </ion-row>
-                      
-                                 
-                             
-                                 <ion-icon item-content name="clock" item-content> </ion-icon>
-                                
-                
-                            </ion-item>
-                
-                           
-                
-                       </ion-item-sliding>
-                      
-                    </ion-list>
-                  
-                    <ion-list *ngSwitchCase="'finalizados'">
-    
-                        <ion-item-sliding *ngFor="let entregue of entregues | async" >  
-                            <ion-item *ngIf="entregue.Userkey == user.key">
-                                 
-              
-                                      <ion-row>
-                            <ion-col col-5>
-                                                
-                               <h3> Produto: {{entregue.prodNome}}</h3>
-                               <p>{{entregue.pontosProd}} Pontos</p>
-                           
-                           </ion-col>
-                                    
-                           
-                                <ion-col col-7>
-                                      <h3> Usuario: {{entregue.userNome}} </h3> 
-                                  <p>Status: {{entregue.status}}</p>
-                              
-                       </ion-col>
-                                                    
-                      
-                                      </ion-row>
-                      
-                                 
-                             
-                                 <ion-icon item-content name="clock" item-content> </ion-icon>
-                                
-                
-                            </ion-item>
-                
-                           
-                
-                       </ion-item-sliding>
-                    </ion-list>
-                  </div>
+                              <ion-icon  name="search"></ion-icon>
+                              <p ion-text >Filtrar</p>
+                          </button>
+                      </ion-buttons>
+                  </ion-col>
+
+                  <ion-item class="datepicker" *ngIf="date" (click)="clickDate()">
+                    
+                      <ion-icon  name="calendar" item-content item-start></ion-icon>
             
-  
-            </ion-col>
+                   
+                      <ion-select [(ngModel)]="mesHoje" interface="popover" >
+                          <ion-option *ngFor="let mesHoje of armeses " [value]="mesHoje" (ionSelect)="contar(mesHoje); contarAguardando(mesHoje); contarEntregue(mesHoje)">
+                              {{mesHoje | uppercase}}</ion-option>
+                          
+                      </ion-select>
+                      <ion-select [(ngModel)]="anoHoje" interface="popover">
+                          <ion-option *ngFor="let ano of anos " [value]="ano">{{ano | uppercase}}</ion-option>
+                      </ion-select>
+
+                      <ion-icon  name="close" item-end></ion-icon>
+                  </ion-item>
+
+
+
+                  <!--searchbar-->
+                  <ion-searchbar   *ngIf="status==='solicitados' && searchBarOpen " showCancelButton="true" (ionCancel)="barClick()" (ionInput)="getRes($event)"  placeholder="Produto" ></ion-searchbar>
+                 <ion-searchbar *ngIf="status==='finalizados' && searchBarOpen " showCancelButton="true" (ionCancel)="barClick()" (ionInput)="getFim($event)"  placeholder="Produto" ></ion-searchbar>
+                
+
           </ion-row>
-  
+      </ion-grid>
 
 
-    
-        </ion-grid>
 
+
+      <ion-segment [(ngModel)]="status">
+          <ion-segment-button value="solicitados">
+                
+                       <ion-icon name="clock" item-start></ion-icon>
+                       Solicitados
+                       <ion-badge color="light" item-end>{{items}}</ion-badge>
+                       <ion-badge color="laranja" item-end>{{contAguard}}</ion-badge>
+                    
+             
+          </ion-segment-button>
+          <ion-segment-button value="finalizados">
+
+                  <ion-icon name="checkmark-circle-outline" item-start></ion-icon>
+                  Finalizados
+                  <ion-badge color="secondary" item-end>{{contEntregue}}</ion-badge>
+                          
+          </ion-segment-button>
+      </ion-segment>
+
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+
+<ion-content padding>
      
-  </ion-content>
+  <ion-grid>
+
+      <ion-row>
+          <ion-col col-12>
+      
+            
+              <div [ngSwitch]="status">
+
+                  <ion-list *ngSwitchCase="'solicitados'">
+
+                      <ion-item-sliding *ngFor="let resgate of resgates | async let i=index">
+                          
+                          <ion-item (click)="abrirModal(resgate)" text-wrap *ngIf="resgate.status==='Aguardando' && resgate.mesResgate===mesHoje && resgate.anoResgate===anoHoje && user.key===resgate.Userkey || resgate.status==='Solicitado' && resgate.mesResgate===mesHoje && resgate.anoResgate===anoHoje && user.key===resgate.Userkey">
+
+                              <!--*ngIf="resgate.status==='Aguardando'  || resgate.status==='Solicitado'"-->
+                              <!--*ngIf="resgate.mesResgate===mesHoje"-->
+
+                             <!-- <div text-center *ngIf=" i > 0" >
+                                      <ion-spinner name="bubbles"> </ion-spinner>
+                                  <p>Carregando...</p>
+                                  </div> -->
+                                 
+                        
+                  
+                              <ion-avatar item-start>
+                                  <img src="{{ resgate.url }}" />
+                              </ion-avatar>
+                              <h2>{{resgate.prodNome}}</h2>
+                              <p> {{resgate.userNome}} </p>
+                              <p> CPF: {{resgate.cpfUser}} </p>
+                              <span>{{resgate.dataResgate |date: 'dd/MM/yyyy'}}</span>
+
+                               
 
 
-  
+
+                              <button ion-button item-content item-end icon-only clear>
+                                  <ion-icon *ngIf="resgate.status === 'Aguardando'" class="iconeA" name="clock"> </ion-icon>
+
+                                  <ion-icon *ngIf="resgate.status === 'Solicitado'" class="iconeS" name="paper-plane"> </ion-icon>
+                              </button>
+
+                        
+                          </ion-item>
+
+
+                      </ion-item-sliding>
+
+
+
+
+                  </ion-list>
+
+
+                  <!--finalizados-->
+                  <ion-list *ngSwitchCase="'finalizados'">
+
+                      <ion-item-sliding *ngFor="let entregue of entregues | async let i=index">
+
+                          <ion-item text-wrap (click)="abrirModal(entregue)" *ngIf="entregue.mesResgate===mesHoje && entregue.anoResgate===anoHoje && user.key===entregue.Userkey">
+
+
+
+                              <ion-avatar item-start>
+                                  <img src="{{ entregue.url }}" />
+                              </ion-avatar>
+                              <h2>{{entregue.prodNome}}</h2>
+                              <p> {{entregue.userNome}} </p>
+                              <p> CPF: {{entregue.cpfUser}} </p>
+
+
+
+
+                              <button color="secondary" ion-button item-content item-end icon-only clear>
+                                  <ion-icon class="icone" name="checkmark-circle-outline"> </ion-icon>
+                              </button>
+
+
+                          </ion-item>
+
+
+                      </ion-item-sliding>
+
+
+
+
+                  </ion-list>
+
+
+              </div>
+
+
+          </ion-col>
+      </ion-row>
+
+
+
+
+  </ion-grid>
+  <!--   <ion-infinite-scroll 
+  threshold="20%" 
+  (ionInfinite)="$event.waitFor(doInfinite())">
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>   
+</ion-infinite-scroll>
+
+<ion-refresher (ionRefresh)="doRefresh($event)">
+  <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    pullingText="Pull to refresh"
+    refreshingSpinner="circles"
+    refreshingText="Refreshing...">
+  </ion-refresher-content>
+</ion-refresher> -->
+
+
+
+</ion-content>

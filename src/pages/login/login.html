@@ -1,60 +1,68 @@
 
 
 
-<ion-content padding>
+<ion-content padding class="clogin"> 
 
-    <img class="banner" src="assets/imgs/logousuario.png"   />
+  <!--<img class="banner" src="assets/imgs/logoempresa.png"   /> -->
+  <h1>Line</h1>
+  
+  <h5 text-center>Modo Empresa</h5>
+  <ion-card class="card">
+      <ion-card-header  >
+          <img class="logo" src="assets/imgs/logo.png"/>
+        <h2 ion-text color="violet">Faça seu Login</h2>
+        </ion-card-header>
 
-    <ion-card class="card">
-        <ion-card-header  >
-            <img class="logo" src="assets/imgs/logo.png"/>
-            <h1 ion-text>Faça seu Login </h1>
-          </ion-card-header>
-
-          <ion-card-content>
-              <form [formGroup]="form">
-                  <ion-item>
-                    <ion-label stacked>E-mail</ion-label>
-                    <ion-input type="email" formControlName="email"></ion-input>
-                  </ion-item>
-                  <ion-item *ngIf="!form.controls.email.valid && (form.controls.email.dirty || form.controls.email.touched)" color="danger">
-                    <div [hidden]="!form.controls.email.errors.required">
-                      O campo é obrigatório
-                    </div>
-                    <div [hidden]="!form.controls.email.errors.email">
-                      O e-mail é invalido
-                    </div>
-                  </ion-item>
-              
-                  <ion-item>
-                    <ion-label stacked>Senha</ion-label>
-                    <ion-input type="password" formControlName="password"></ion-input>
-                  </ion-item>
-                  <ion-item *ngIf="!form.controls.password.valid && (form.controls.password.dirty || form.controls.password.touched)" color="danger">
-                    <div [hidden]="!form.controls.password.errors.required">
-                      O campo é obrigatório
-                    </div>
-                  </ion-item>
-              
-                  <div padding>
-                    <button ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Entrar</button>
+        <ion-card-content>
+            <form [formGroup]="form">
+                <ion-item>
+                  <ion-label stacked>E-mail</ion-label>
+                  <ion-input type="email" formControlName="email"></ion-input>
+                  <ion-icon name="mail" color="violet" item-end></ion-icon>
+                </ion-item>
+                <ion-item *ngIf="!form.controls.email.valid && (form.controls.email.dirty || form.controls.email.touched)" color="danger">
+                  <div [hidden]="!form.controls.email.errors.required">
+                    e-mail vazio
                   </div>
-              </form>
+                  <div [hidden]="!form.controls.email.errors.email">
+                    e-mail invalido
+                  </div>
+                </ion-item>
+                
+            
+                <ion-item>
+                  <ion-label stacked>Senha</ion-label>
+                  <ion-input type="password" formControlName="password"></ion-input>
+                  <ion-icon name="key" color="violet" item-end></ion-icon>
+                </ion-item>
+                <ion-item *ngIf="!form.controls.password.valid && (form.controls.password.dirty || form.controls.password.touched)" color="danger">
+                  <div [hidden]="!form.controls.password.errors.required">
+                    digite a senha
+                  </div>
+                </ion-item>
+            
+                <div padding>
+                  <button color="violet" ion-button block type="submit" [disabled]="!form.valid" (click)="onSubmit()">Entrar</button>
+                </div>
+            </form>
 
-              <ion-item (click)="irResetPage()">
-                  <button ion-button clear item-right >
-                      Recuperar senha?
-                  </button>
-              </ion-item>
+            <ion-item (click)="irResetPage()">
+                <button color="laranja" ion-button clear item-right >
+                    Recuperar senha?
+                </button>
+            </ion-item>
 
-              <ion-item> 
-                  <ion-label>Não tem conta ?</ion-label>
-                  <button (click)="registrese()" ion-button clear item-right> Registre-se </button>
-              </ion-item>
+            <ion-item> 
+                <ion-label ion-text color="violet">Não tem conta ?</ion-label>
+                <button color="laranja" (click)="registrese()" ion-button clear item-right> Registre-se </button>
+            </ion-item>
 
 
-          </ion-card-content>
+        </ion-card-content>
 
-    </ion-card>
+  </ion-card>
+
+  
+  <div class="copyright" text-center ion-text>© LineApp - aplicativo fidelidade</div>
 
 </ion-content>

@@ -1,27 +1,48 @@
 page-login {
 
+    .clogin {
+        background-color: #8A2BE2;
+        color:white;
+
+    }
+
+    .logo {     
+        width: 70px;
+        margin: 0 auto;
+    }
     
-        .logo {     
-            width: 70px;
-            margin: 0 auto;
-        }
-        
-        h1{
-            text-align: center;
-            padding: 20px;
-        }
-    
-        .card {
-            margin: 0 auto;
-            
-        }
-        .banner{
-            height: 100px;
-            width: 100%;
-            padding: 20px;
-            margin: 0 auto;
-           
-        }
+    h1{
+        text-align: center;
+        padding: 15px;
        
-    
+    }
+    h1::after{
+        content: "App";
+        color: #FF7F50;
+        
+    }
+
+    h2{
+        text-align: center;
+        padding: 15px;
+     
+    }
+    .card {
+        margin: 0 auto;
+      //  background-color:rgba($color: #ffffff, $alpha: 0.8);
+        
+    }
+    .banner{
+        height: 100px;
+        width: 100%;
+        padding: 20px;
+        margin: 0 auto;
+       
+    }
+
+    .copyright{
+        padding: 2rem;
+    }
+   
+
 }

@@ -1,97 +1,85 @@
+<ion-header no-border>
 
-<ion-header>
+    <ion-navbar>
+        <ion-row text-center>
 
-        <ion-navbar>
-                <ion-row text-center>
-                
-                  <ion-col col-4 offset-6> Olá {{user.name}}
-                    <br> Bem Vindo!!! </ion-col>
-                  <ion-col col-2>
-                    <ion-buttons end>
-                      <button ion-button icon-only (click)="sair()">
+            <ion-col col-3 class="ptitle">
+                {{user.pontos}} <br> Pontos
+              </ion-col>
+            <ion-col col-4 offset-3 class="ptitle"> Olá {{user.name}}
+                <br> Bem Vindo!!! </ion-col>
+            <ion-col col-2>
+                <ion-buttons end>
+                    <button ion-button icon-only (click)="sair()">
                         <ion-icon name="exit"></ion-icon>
-                      </button>
-                    </ion-buttons>
-                  </ion-col>
-                </ion-row>
-              </ion-navbar>
-            
+                    </button>
+                </ion-buttons>
+            </ion-col>
+        </ion-row>
+    </ion-navbar>
+
+    <!--<ion-toolbar>
+        <ion-title text-center>Destaques</ion-title>
+    </ion-toolbar> -->
+
+   
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content no-padding>
 
-  <ion-grid>
-
-
-      <ion-row>
-          <ion-col col-12 text-center>
-              <h3> Noticias em destaques</h3>
-          </ion-col>
-      </ion-row>
-
-    <ion-row>
-        <ion-col col-12 >
+        
 
             
-<ion-slides pager>
-<ion-slide  *ngFor="let noticia of noticias | async">
+   <div class="destaques">
+    <ion-slides effect="coverflow" pager centeredSlides paginationType="progress" >
+        <ion-slide *ngFor="let noticia of noticias | async">
 
-    <ion-card>
-        <ion-card-title>
-            {{noticia.titulo}}
-            </ion-card-title>
-        <img class="imgslide" src="{{noticia.url}}"/>
-        <ion-card-content>
-          
-          <p>
-            {{noticia.descricao}}
-          </p>
-        </ion-card-content>
-      </ion-card>
-  
+            <ion-card>
 
-</ion-slide>
+                <img class="imgslide" src="{{noticia.url}}" />
+                <ion-card-content>
+                    <ion-card-title color="laranja">
+                        {{noticia.titulo}}
+                    </ion-card-title>
 
-</ion-slides>
-        
-        
-        </ion-col>
+                    <p>
+                        {{noticia.descricao}}
+                    </p>
+                </ion-card-content>
+            </ion-card>
 
-    </ion-row> 
 
-    </ion-grid>
-<!---->
+        </ion-slide>
+
+    </ion-slides>
+
+
+
+    <!---->
 
 
     <ion-grid>
 
+        <ion-row>
+            <ion-col no-padding col-6 *ngFor="let recompensa of recompensas | async">
+                <ion-list>
+                    <ion-item class="card-background-page">
 
-    <ion-row>
-        <ion-col col-12 text-center>
-            <h3> Produtos em destaques</h3>
-        </ion-col>
-    </ion-row>
+                        <ion-card>
+                            <img class="imgdestaque" src="{{ recompensa.url }}" />
+                            <div class="card-title">{{recompensa.nome}}</div>
+                            <div class="card-subtitle">{{recompensa.pontos}} Pontos</div>
+                        </ion-card>
 
-            <ion-row>
-                    <ion-col no-padding col-6 *ngFor="let recompensa of recompensas | async">
-                        <ion-list>
-                            <ion-item  class="card-background-page">
 
-                                    <ion-card>
-                                            <img class="imgdestaque" src="{{ recompensa.url }}"/>
-                                            <div class="card-title">{{recompensa.nome}}</div>
-                                            <div class="card-subtitle">{{recompensa.pontos}} Pontos</div>
-                                 </ion-card>
-                                    
-                                    
-                            </ion-item>
-                        </ion-list>
-                           
-                    </ion-col>
-                </ion-row> 
-        
+                    </ion-item>
+                </ion-list>
+
+            </ion-col>
+        </ion-row>
+
     </ion-grid>
-
+</div> 
 </ion-content>

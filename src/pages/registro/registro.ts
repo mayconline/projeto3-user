@@ -34,7 +34,8 @@ export class RegistroPage {
       cpf: [''],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      pontos:[0]
+      pontos:[0],
+      role:['usuario']
     });
   }
 

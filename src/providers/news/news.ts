@@ -2,22 +2,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
-import { ToastController } from 'ionic-angular';
+import { ToastController, LoadingController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
-/*
-  Generated class for the NewsProvider provider.
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class NewsProvider {
 
   private PATH = 'news/';
 
   constructor(private afDb: AngularFireDatabase, private fb:FirebaseApp,
-  private toast:ToastController) {
+  private toast:ToastController, private loadingCtrl: LoadingController) {
     
   }
 
@@ -85,6 +80,11 @@ public uploadAndSave(noticia: any, image:any) {
      this.save(noticia);
    } else {
  
+      // chamando o loading
+    let loading = this.loadingCtrl.create({
+      content:'Salvando ...'
+    });
+    loading.present(); 
    
  
      let storageRef = this.fb.storage().ref();
@@ -108,9 +108,10 @@ public uploadAndSave(noticia: any, image:any) {
       this.save(noticia);
       
        
-      this.toast.create({ message: 'Recompensa Adicionada', duration: 3000}).present();
+      this.toast.create({ message: 'Noticia Adicionada', duration: 3000}).present();
       
-      
+       //encerrando o loading
+     loading.dismiss();
       
  
       
@@ -119,7 +120,8 @@ public uploadAndSave(noticia: any, image:any) {
        .catch((e)=>{
          this.toast.create({ message: 'Falha ao gravar os dados', duration:3000}).present();
          console.error(e);
- 
+         loading.dismiss();
+        
          
      })
  

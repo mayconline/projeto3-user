@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase } from 'angularfire2/database';
 import { FirebaseApp } from 'angularfire2';
 import * as firebase from 'firebase';
+import { LoadingController } from 'ionic-angular';
 import { ToastController} from 'ionic-angular';
 
 
@@ -15,7 +16,7 @@ export class RecompensasProvider {
     
     
   constructor( private afDb: AngularFireDatabase, private fb:FirebaseApp,
-  private toast:ToastController) {
+  private toast:ToastController, private loadingCtrl: LoadingController) {
     
     
   }
@@ -51,12 +52,12 @@ export class RecompensasProvider {
 
       if(recompensa.key) {
             this.afDb.list(this.PATH)
-              .update(recompensa.key, {nome: recompensa.nome, pontos: recompensa.pontos, destaque: recompensa.destaque, url:recompensa.url, fullPath:recompensa.fullPath})
+              .update(recompensa.key, {nome: recompensa.nome, pontos: recompensa.pontos, destaque: recompensa.destaque, url:recompensa.url, fullPath:recompensa.fullPath, dias:recompensa.dias})
               .then(()=> resolve())
               .catch((e)=> reject(e));
       }else{
             this.afDb.list(this.PATH)
-              .push({ nome: recompensa.nome, pontos: recompensa.pontos, destaque: recompensa.destaque, url:recompensa.url, fullPath: recompensa.fullPath})
+              .push({ nome: recompensa.nome, pontos: recompensa.pontos, destaque: recompensa.destaque, url:recompensa.url, fullPath: recompensa.fullPath, dias:recompensa.dias})
               .then(()=> resolve());
               
 
@@ -76,7 +77,12 @@ public uploadAndSave(recompensa: any, image:any) {
     this.save(recompensa);
   } else {
 
-  
+    // chamando o loading
+    let loading = this.loadingCtrl.create({
+      content:'Salvando ...'
+    });
+    loading.present(); 
+   
 
     let storageRef = this.fb.storage().ref();
     const filename = recompensa.nome  
@@ -100,19 +106,20 @@ public uploadAndSave(recompensa: any, image:any) {
      
       
      this.toast.create({ message: 'Recompensa Adicionada', duration: 3000}).present();
-     
-     
+
+     //encerrando o loading
+     loading.dismiss();
      
 
      
       }) 
 
       .catch((e)=>{
-        this.toast.create({ message: 'Falha ao gravar os dados', duration:3000}).present();
-        console.error(e);
-
+       this.toast.create({ message: 'Falha ao gravar os dados', duration:3000}).present();
+       console.error(e);
+       loading.dismiss();
         
-    })
+    }) 
 
 
     
