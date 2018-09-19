@@ -45,6 +45,40 @@ export class OnesignalProvider {
     }
  
 
+   obterOneUserId(){
+     this.oneSignal.getPermissionSubscriptionState().then(data=> {
+
+      data.permissionStatus.hasPrompted;
+      data.permissionStatus.status;
+      data.subscriptionStatus.subscribed;
+      data.subscriptionStatus.userSubscriptionSetting;
+      data.subscriptionStatus.pushToken;
+
+      var OneID = data.subscriptionStatus.userId;
+      alert('id do usuario'+ OneID );
+
+
+     })
+     .catch((e)=>e);
+
+      
+     
+   }
+
+   // metodo para enviar mensagem onesignal
+
+   enviarOneSig( oneID, mensagem){
+    //this.oneSignal.getIds().then(data=>{
+       
+      var notificationObj = {
+        contents:{en: mensagem },
+        include_player_ids: [oneID]   
+      }
+      this.oneSignal.postNotification(notificationObj);
+
+    // })
+    // .catch((e)=>e);
+   }
 
 
 
