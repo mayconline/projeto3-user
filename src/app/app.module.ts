@@ -19,6 +19,8 @@ import { UsuariosProvider } from '../providers/usuarios/usuarios';
 import { PontosProvider } from '../providers/pontos/pontos';
 import { VendasProvider } from '../providers/vendas/vendas';
 import { NewsProvider } from '../providers/news/news';
+import { OnesignalProvider } from '../providers/onesignal/onesignal';
+import { OneSignal } from '@ionic-native/onesignal';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { NewsProvider } from '../providers/news/news';
     VendasProvider,
     Camera,
     LoadingController,
-    NewsProvider
+    NewsProvider,
+    OnesignalProvider,
+    OneSignal
 
   ]
 })

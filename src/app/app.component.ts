@@ -5,7 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Subscription } from 'rxjs/Subscription';
 
-
+import { OnesignalProvider } from '../providers/onesignal/onesignal';
+import {isCordovaAvailable} from '../cordovaHabilitado';
 
 @Component({
   templateUrl: 'app.html'
@@ -14,18 +15,21 @@ export class MyApp {
   rootPage:any
   user$:Subscription;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, afAuth: AngularFireAuth) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, afAuth: AngularFireAuth,
+  oneSignalProvider:OnesignalProvider ) {
 
+    
+ 
   
   this.user$ =  afAuth.authState.subscribe(user=>{
         if(user){
-          this.rootPage = 'TabsPage'
+          this.rootPage = 'TabsPage';
         } else{
           this.rootPage = 'LoginPage'
         }
     });
 
-   
+  
 
 
     
@@ -37,6 +41,10 @@ export class MyApp {
       //statusBar.overlaysWebView(true);
       statusBar.backgroundColorByHexString('#8A2BE2');
       splashScreen.hide();
+
+      if(isCordovaAvailable()){  oneSignalProvider.init();}
+    
+      
     });
   }
 
@@ -45,7 +53,10 @@ export class MyApp {
    
     
   }
+
+ 
   
+
 
 }
 
