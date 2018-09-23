@@ -43,11 +43,14 @@ export class MyApp {
       splashScreen.hide();
 
       if(isCordovaAvailable()){  oneSignalProvider.init();
+       // oneSignalProvider.enviarTag("type","cliente");
+       oneSignalProvider.testeEnvio();
         
+      //  oneSignalProvider.deleteTag("user_type");
         //obtem o id do usuario//
        // oneSignalProvider.obterOneUserId();
         //envio de mensagem pasando id e a mensagem //
-        //oneSignalProvider.enviarOneSig("78cf31ff-90aa-4941-82c8-de513bdc0691","Testando" );
+      //oneSignalProvider.enviarOneSig();
       }
     
       

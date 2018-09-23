@@ -3,7 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule, LoadingController } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Camera } from '@ionic-native/camera'
+import { Camera } from '@ionic-native/camera';
+import {HttpClientModule} from '@angular/common/http';
 
 import {AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -33,7 +34,8 @@ import { OneSignal } from '@ionic-native/onesignal';
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    LoginPageModule
+    LoginPageModule,
+    HttpClientModule
   
   ],
   bootstrap: [IonicApp],

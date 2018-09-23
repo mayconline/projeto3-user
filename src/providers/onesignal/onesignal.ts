@@ -1,15 +1,15 @@
-//import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { OneSignal, OSNotificationPayload} from '@ionic-native/onesignal';
 
-import {oneSignalAppId, senderId} from '../../onesigConfig';
+import {oneSignalAppId, senderId, restAPI} from '../../onesigConfig';
 
 
 @Injectable()
 export class OnesignalProvider {
 
-  constructor(public oneSignal:OneSignal) {
+  constructor(public oneSignal:OneSignal, public httpClient:HttpClient) {
   
   }
 
@@ -25,7 +25,7 @@ export class OnesignalProvider {
 
   
 
-      this.oneSignal.startInit( oneSignalAppId, senderId );
+      this.oneSignal.startInit( oneSignalAppId, senderId);
       this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
       
       this.oneSignal.handleNotificationReceived().subscribe(() => { 
@@ -67,20 +67,80 @@ export class OnesignalProvider {
 
    // metodo para enviar mensagem onesignal
 
-   enviarOneSig( oneID, mensagem){
-    //this.oneSignal.getIds().then(data=>{
-       
-      var notificationObj = {
-        contents:{en: mensagem },
-        include_player_ids: [oneID]   
-      }
-      this.oneSignal.postNotification(notificationObj);
+   enviarOneSig(){
+    
+        var notificationObj = {
+        
+        
+         app_id:oneSignalAppId,
+         included_segments:["clientes"],
 
-    // })
-    // .catch((e)=>e);
+         contents:{en: "testando 12344" }
+        
+         // include_player_ids: [oneID]   
+        /*  filters:[
+            {"field":"tag","key":"type","relation":"=","value":"cliente"}
+           // {"field":"tag","key":"user_UID","relation":"=","value": uid}
+          ]*/
+          
+        }
+        this.oneSignal.postNotification(notificationObj);
+      
+
+       }
+      
+
+
+
+   enviarTag(key,valorA){
+     this.oneSignal.sendTag(key,valorA);
+    
+   }
+   
+   deleteTag(user_UID){
+     this.oneSignal.deleteTag(user_UID);
    }
 
 
+   testeEnvio(){
+
+    const httpOptions = {
+      headers:new HttpHeaders({
+        "Content-Type": "application/json; charset=utf-8",
+        "Authorization": "Basic "+restAPI
+      })
+
+    }
+  /*  var headers:HttpHeaders = new HttpHeaders({
+      "Content-Type": "application/json; charset=utf-8",
+      "Authorization": "Basic "+restAPI
+    }) ; */  
+    var body = {           
+      "app_id":oneSignalAppId,
+      "contents":{"en": "testando 2026" },
+      "included_segments":["clientes"]
+     /* filters:[
+         {"field":"tag","key":"type","relation":"=","value":"cliente"}
+        // {"field":"tag","key":"user_UID","relation":"=","value": uid}
+         // include_player_ids: [oneID]   
+       ],*/
+       
+     };
+    
+      return this.httpClient.post('https://onesignal.com:443/api/v1/notifications',body,httpOptions )
+      .subscribe((data)=>{ console.log(data)});
+        
 
 
-}
+    } 
+   
+
+
+   }
+
+
+ 
+
+      
+
+
