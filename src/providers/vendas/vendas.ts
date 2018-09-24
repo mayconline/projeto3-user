@@ -4,6 +4,7 @@ import { AngularFireDatabase /*, AngularFireList */} from 'angularfire2/database
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthServiceProvider } from '../auth-service/auth-service';
+import { OnesignalProvider } from '../onesignal/onesignal';
 //import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 //import { Observable } from 'rxjs/Observable';
 //import { tap, map, take } from 'rxjs/operators'
@@ -16,7 +17,7 @@ export class VendasProvider {
   private PATH = 'resgates/';
 
   constructor( private afDb: AngularFireDatabase, private afAuth: AngularFireAuth,
-     private authService: AuthServiceProvider) {
+     private authService: AuthServiceProvider, public onesignalProvider:OnesignalProvider) {
         
     this.obterUser();
     }
@@ -137,6 +138,9 @@ export class VendasProvider {
                  
                 this.calcPontos(resgate.pontosProd);
                 this.atualizaPonto(this.user);
+
+                this.onesignalProvider.envioOneSigFiltro( `Novo Pedido`,`${this.user.name} solicitou um produto `);
+
                 resolve()
               })
             

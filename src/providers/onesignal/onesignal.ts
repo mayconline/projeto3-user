@@ -105,7 +105,7 @@ export class OnesignalProvider {
    }
 
 
-   testeEnvio(){
+   envioOneSigFiltro(titulo, mensagem){
 
     const httpOptions = {
       headers:new HttpHeaders({
@@ -113,19 +113,16 @@ export class OnesignalProvider {
         "Authorization": "Basic "+restAPI
       })
 
-    }
-  /*  var headers:HttpHeaders = new HttpHeaders({
-      "Content-Type": "application/json; charset=utf-8",
-      "Authorization": "Basic "+restAPI
-    }) ; */  
+    } 
     var body = {           
       "app_id":oneSignalAppId,
-      "contents":{"en": "testando envio para admin" },
+      "contents":{"en": mensagem },
      // "included_segments":["clientes"]
+     "headings":{"en": titulo},
+    
      filters:[
          {"field":"tag","key":"type","relation":"=","value":"admin"}
-        // {"field":"tag","key":"user_UID","relation":"=","value": uid}
-         // include_player_ids: [oneID]   
+         
        ]
        
      };

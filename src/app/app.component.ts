@@ -44,7 +44,7 @@ export class MyApp {
 
       if(isCordovaAvailable()){  oneSignalProvider.init();
        // oneSignalProvider.enviarTag("uid_user","123");
-       oneSignalProvider.testeEnvio();
+      // oneSignalProvider.testeEnvio();
         
       //  oneSignalProvider.deleteTag("user_type");
         //obtem o id do usuario//
