@@ -43,7 +43,7 @@ export class MyApp {
       splashScreen.hide();
 
       if(isCordovaAvailable()){  oneSignalProvider.init();
-       // oneSignalProvider.enviarTag("type","cliente");
+       // oneSignalProvider.enviarTag("uid_user","123");
        oneSignalProvider.testeEnvio();
         
       //  oneSignalProvider.deleteTag("user_type");

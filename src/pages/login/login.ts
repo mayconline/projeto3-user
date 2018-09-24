@@ -8,6 +8,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -40,6 +41,8 @@ export class LoginPage {
           this.toast.create({ 
             message: ` Seja Bem Vindo : ${this.form.value.email}`,
              duration: 3000 }).present();
+
+            
           
         })
         

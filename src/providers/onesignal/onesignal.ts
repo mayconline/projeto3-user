@@ -91,6 +91,9 @@ export class OnesignalProvider {
       
 
 
+   enviarTags(TypeA, UIDB){
+     this.oneSignal.sendTags({type:TypeA,uid_user:UIDB});
+   }    
 
    enviarTag(key,valorA){
      this.oneSignal.sendTag(key,valorA);
@@ -117,13 +120,13 @@ export class OnesignalProvider {
     }) ; */  
     var body = {           
       "app_id":oneSignalAppId,
-      "contents":{"en": "testando 2026" },
-      "included_segments":["clientes"]
-     /* filters:[
-         {"field":"tag","key":"type","relation":"=","value":"cliente"}
+      "contents":{"en": "testando envio para admin" },
+     // "included_segments":["clientes"]
+     filters:[
+         {"field":"tag","key":"type","relation":"=","value":"admin"}
         // {"field":"tag","key":"user_UID","relation":"=","value": uid}
          // include_player_ids: [oneID]   
-       ],*/
+       ]
        
      };
     
