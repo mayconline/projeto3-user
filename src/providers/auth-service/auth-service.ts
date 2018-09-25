@@ -35,6 +35,9 @@ export class AuthServiceProvider {
             role:user.role
 
           });
+        // Enviando tags do usuario atual logado 
+         let uid_userValue =  this.afAuth.auth.currentUser.uid;
+            this.onesignalProvider.enviarTag("uid_user",uid_userValue);
           resolve();
         })
         .catch(e => {
